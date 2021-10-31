@@ -61,6 +61,7 @@ const Header = () => {
     { key: 'unit-3', event: () => history.push('/unit/3'), title: 'Розділ 3' },
     // { key: 'unit-4', event: () => history.push('/unit/4'), title: 'Розділ 4' },
     { key: 'unit-5', event: () => history.push('/unit/5'), title: 'Розділ 5' },
+    // { key: 'unit-6', event: () => history.push('/unit/6'), title: 'Розділ 6' },
     { key: 'unit-7', event: () => history.push('/unit/7'), title: 'Розділ 7' },
   ];
 
