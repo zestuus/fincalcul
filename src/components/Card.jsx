@@ -6,6 +6,7 @@ import { Grid, TextField } from "@material-ui/core";
 import { CardWrapper } from "../constants/common-styled-components";
 
 const Formula = styled.p`
+  font-weight: bold;
   margin: 5px;
   padding: 7px 15px;
   border: 1px solid black;
