@@ -29,7 +29,7 @@ const Solver = ({ formula, image, variables }) => {
   const [dependentVariable, setDependentVariable] = useState(0);
 
   Object.keys(independentVariables).forEach(key => {
-    calculation = calculation.replace(key, `_['${key}']`);
+    calculation = calculation.replaceAll(key, `_['${key}']`);
   });
 
   const handleChange = (key, value) => {
