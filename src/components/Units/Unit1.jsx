@@ -1,4 +1,7 @@
-import formula_1_1_1 from "../../images/formulas/formula-1-1-1.jpg";
+import formula_1_1 from "../../images/formulas/formula-1-1.jpg";
+import formula_1_2 from "../../images/formulas/formula-1-2.jpg";
+import formula_1_3 from "../../images/formulas/formula-1-3.jpg";
+import formula_1_4 from "../../images/formulas/formula-1-4.jpg";
 
 const Unit1 = {
   title: 'Прості відсотки',
@@ -8,7 +11,7 @@ const Unit1 = {
       formulas: [
         {
           formula: 'I=n*p',
-          image: formula_1_1_1,
+          image: formula_1_1,
           variables: [
             { name: 'I', description: 'відсоткова ставка (проценти)' },
             { name: 'n', description: 'термін угоди' },
@@ -17,7 +20,7 @@ const Unit1 = {
         },
         {
           formula: 'I=n*p',
-          image: formula_1_1_1,
+          image: formula_1_2,
           variables: [
             { name: 'I', description: 'відсоткова ставка (проценти)' },
             { name: 'n', description: 'термін угоди' },
@@ -27,11 +30,11 @@ const Unit1 = {
       ],
     },
     {
-      title: '1.1 Нарощення за простими відсотковими ставками',
+      title: '1.2 Нарощення за простими відсотковими ставками',
       formulas: [
         {
           formula: 'I=n*p',
-          image: formula_1_1_1,
+          image: formula_1_3,
           variables: [
             { name: 'I', description: 'відсоткова ставка (проценти)' },
             { name: 'n', description: 'термін угоди' },
@@ -40,7 +43,7 @@ const Unit1 = {
         },
         {
           formula: 'I=n*p',
-          image: formula_1_1_1,
+          image: formula_1_4,
           variables: [
             { name: 'I', description: 'відсоткова ставка (проценти)' },
             { name: 'n', description: 'термін угоди' },
