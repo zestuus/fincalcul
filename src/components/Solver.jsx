@@ -19,11 +19,25 @@ const Label = styled.span`
   font-size: 22px;
 `;
 
+const Π = arr => arr.reduce((a, b) =>a*b, 1);
+const Σ = arr => arr.reduce((a, b) =>a+b, 0);
+const Μ = (arr, mapper) => arr.map(mapper);
+
 const Solver = ({ formula, image, variables }) => {
-  let [dependentVariableName, calculation] = formula.split('=');
+  let [dependentVariableName, calculation] = formula.split(/=(.+)/);
   const defaultIndependentVariables = variables
     .filter(variable => variable.name !== dependentVariableName)
-    .reduce((acc, variable) => ({ ...acc, [variable.name]: 0 }), {});
+    .reduce((acc, variable) => {
+      const lengthVariable = variables.find(v => variable.length === v.name)
+
+      return variable.length ? (
+        {...acc, [variable.name]: lengthVariable && lengthVariable.default ? (
+            Array(lengthVariable.default).fill(variable.default || 0)
+          ) : []}
+      ) : (
+        {...acc, [variable.name]: (variable.default || 0)}
+      )
+    }, {});
 
   const [independentVariables, setIndependentVariables] = useState(defaultIndependentVariables);
   const [dependentVariable, setDependentVariable] = useState(0);
@@ -32,9 +46,31 @@ const Solver = ({ formula, image, variables }) => {
     calculation = calculation.replaceAll(key, `_['${key}']`);
   });
 
-  const handleChange = (key, value) => {
+  const handleChange = (key, value, index=null) => {
+    const variable = variables.find(variable => variable.name === key);
+    const newValue = parseFloat(value) === 0 ? 0 : (parseFloat(value) || (variable && variable.default) || 0);
     let result = dependentVariable;
-    const _ = { ...independentVariables, [key]: parseFloat(value) || 0 }
+    let _ = { ...independentVariables };
+
+    if (index === null) {
+      const arraysToUpdate = variables.filter(variable => variable.length === key).map(variable => variable.name);
+
+      arraysToUpdate.forEach(name => {
+        let arrayCopy = [..._[name]];
+        let arrayVariable = variables.find(variable => variable.name === name);
+        const newArray = new Array(Math.max(newValue, 0)).fill((arrayVariable && arrayVariable.default) || 0);
+
+        newArray.forEach((v,i) => newArray[i] = (arrayCopy[i] || (arrayVariable && arrayVariable.default) || 0));
+        _ = { ..._, [name]: newArray }
+      });
+
+      _ = { ..._, [key]: newValue }
+    } else {
+      const arrayCopy = [..._[key]];
+
+      arrayCopy[index] = newValue;
+      _ = { ..._, [key]: arrayCopy }
+    }
 
     setIndependentVariables(_);
     // eslint-disable-next-line no-eval
@@ -53,20 +89,37 @@ const Solver = ({ formula, image, variables }) => {
       </Grid>
       <ul>
         {variables.map(variable => (
-          <li>{variable.name} - {variable.description}</li>
+          <li>{variable.displayName || variable.name}<sub>{variable.sub}</sub><sup>{variable.sup}</sup> - {variable.description}</li>
         ))}
       </ul>
       <p>Введіть значення залежних змінних:</p>
-      {Object.keys(independentVariables).map(key => (
-        <Input
-          key={key}
-          variant="outlined"
-          type="number"
-          label={<Label>{key}</Label>}
-          value={independentVariables[key]}
-          onChange={event => handleChange(key, event.target.value)}
-        />
-      ))}
+      {Object.keys(independentVariables).map(key =>
+        independentVariables[key].length || independentVariables[key].length === 0 ? (
+          <Grid container direction="column">
+            {independentVariables[key].length ? key : `Масив ${key} порожній`}
+            <Grid container>
+              {independentVariables[key].map((value, index) => (
+                <Input
+                  key={`${key}-${index}`}
+                  variant="outlined"
+                  type="number"
+                  label={<Label>{index+1}</Label>}
+                  value={value}
+                  onChange={event => handleChange(key, event.target.value, index)}
+                />
+              ))}
+            </Grid>
+          </Grid>
+        ) : (
+          <Input
+            key={key}
+            variant="outlined"
+            type="number"
+            label={<Label>{key}</Label>}
+            value={independentVariables[key]}
+            onChange={event => handleChange(key, event.target.value)}
+          />
+        ))}
       <p>Результат:</p>
       <Input
         variant="outlined"
