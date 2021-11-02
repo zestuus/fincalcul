@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Grid, TextField } from "@material-ui/core";
 
-const Formula = styled.p`
+const Formula = styled.div`
   font-weight: bold;
   margin: 5px;
   padding: 7px 15px;
@@ -19,9 +19,21 @@ const Label = styled.span`
   font-size: 22px;
 `;
 
+// eslint-disable-next-line no-unused-vars
 const Π = arr => arr.reduce((a, b) =>a*b, 1);
+// eslint-disable-next-line no-unused-vars
 const Σ = arr => arr.reduce((a, b) =>a+b, 0);
+// eslint-disable-next-line no-unused-vars
 const Μ = (arr, mapper) => arr.map(mapper);
+
+const setDefaultForDependentVariable = (_, calculation) => {
+  let result = 0
+
+  // eslint-disable-next-line no-eval
+  eval(`result=${calculation}`);
+
+  return result;
+}
 
 const Solver = ({ formula, image, variables }) => {
   let [dependentVariableName, calculation] = formula.split(/=(.+)/);
@@ -40,11 +52,14 @@ const Solver = ({ formula, image, variables }) => {
     }, {});
 
   const [independentVariables, setIndependentVariables] = useState(defaultIndependentVariables);
-  const [dependentVariable, setDependentVariable] = useState(0);
 
   Object.keys(independentVariables).forEach(key => {
     calculation = calculation.replaceAll(key, `_['${key}']`);
   });
+
+  const [dependentVariable, setDependentVariable] = useState(
+    setDefaultForDependentVariable(independentVariables, calculation)
+  );
 
   const handleChange = (key, value, index=null) => {
     const variable = variables.find(variable => variable.name === key);
@@ -93,40 +108,44 @@ const Solver = ({ formula, image, variables }) => {
         ))}
       </ul>
       <p>Введіть значення залежних змінних:</p>
-      {Object.keys(independentVariables).map(key =>
-        independentVariables[key].length || independentVariables[key].length === 0 ? (
-          <Grid container direction="column">
-            {independentVariables[key].length ? key : `Масив ${key} порожній`}
-            <Grid container>
-              {independentVariables[key].map((value, index) => (
-                <Input
-                  key={`${key}-${index}`}
-                  variant="outlined"
-                  type="number"
-                  label={<Label>{index+1}</Label>}
-                  value={value}
-                  onChange={event => handleChange(key, event.target.value, index)}
-                />
-              ))}
+      <Grid container>
+        {Object.keys(independentVariables).map(key =>
+          independentVariables[key].length || independentVariables[key].length === 0 ? (
+            <Grid container direction="column">
+              {independentVariables[key].length ? key : `Масив ${key} порожній`}
+              <Grid container>
+                {independentVariables[key].map((value, index) => (
+                  <Input
+                    key={`${key}-${index}`}
+                    variant="outlined"
+                    type="number"
+                    label={<Label>{index+1}</Label>}
+                    value={value}
+                    onChange={event => handleChange(key, event.target.value, index)}
+                  />
+                ))}
+              </Grid>
             </Grid>
-          </Grid>
-        ) : (
-          <Input
-            key={key}
-            variant="outlined"
-            type="number"
-            label={<Label>{key}</Label>}
-            value={independentVariables[key]}
-            onChange={event => handleChange(key, event.target.value)}
-          />
-        ))}
+          ) : (
+            <Input
+              key={key}
+              variant="outlined"
+              type="number"
+              label={<Label>{key}</Label>}
+              value={independentVariables[key]}
+              onChange={event => handleChange(key, event.target.value)}
+            />
+          ))}
+      </Grid>
       <p>Результат:</p>
-      <Input
-        variant="outlined"
-        type="number"
-        label={<Label>{dependentVariableName}</Label>}
-        value={dependentVariable}
-      />
+      <Grid container>
+        <Input
+          variant="outlined"
+          type="number"
+          label={<Label>{dependentVariableName}</Label>}
+          value={dependentVariable}
+        />
+      </Grid>
     </Grid>
   );
 };
