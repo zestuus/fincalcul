@@ -93,6 +93,18 @@ const Solver = ({ formula, image, variables }) => {
     setDependentVariable(result);
   };
 
+  const displayVariable = (key, obj = null) => {
+    const variable = obj || variables.find(v => v.name === key);
+
+    return variable ? (
+      <span>
+        {variable.displayName || variable.name}
+        <sub>{variable.sub}</sub>
+        <sup>{variable.sup}</sup>
+      </span>
+    ) : key;
+  };
+
   return (
     <Grid container direction="column">
       <Grid container justifyContent="center">
@@ -103,23 +115,22 @@ const Solver = ({ formula, image, variables }) => {
         </Formula>
       </Grid>
       <ul>
-        {variables.map(variable => (
-          <li>{variable.displayName || variable.name}<sub>{variable.sub}</sub><sup>{variable.sup}</sup> - {variable.description}</li>
+        {variables.map((variable, index) => (
+          <li key={`description-${index}`}>{displayVariable(variable.name, variable)} - {variable.description}</li>
         ))}
       </ul>
       <p>Введіть значення залежних змінних:</p>
       <Grid container>
         {Object.keys(independentVariables).map(key =>
           independentVariables[key].length || independentVariables[key].length === 0 ? (
-            <Grid container direction="column">
-              {independentVariables[key].length ? key : `Масив ${key} порожній`}
+            <Grid key={key} container direction="column">
               <Grid container>
                 {independentVariables[key].map((value, index) => (
                   <Input
                     key={`${key}-${index}`}
                     variant="outlined"
                     type="number"
-                    label={<Label>{index+1}</Label>}
+                    label={<Label>{key}<sub>{index+1}</sub></Label>}
                     value={value}
                     onChange={event => handleChange(key, event.target.value, index)}
                   />
@@ -131,7 +142,7 @@ const Solver = ({ formula, image, variables }) => {
               key={key}
               variant="outlined"
               type="number"
-              label={<Label>{key}</Label>}
+              label={<Label>{displayVariable(key)}</Label>}
               value={independentVariables[key]}
               onChange={event => handleChange(key, event.target.value)}
             />
