@@ -103,15 +103,15 @@ const Solver = ({ formula, image, variables }) => {
         </Formula>
       </Grid>
       <ul>
-        {variables.map(variable => (
-          <li>{variable.displayName || variable.name}<sub>{variable.sub}</sub><sup>{variable.sup}</sup> - {variable.description}</li>
+        {variables.map((variable, index) => (
+          <li key={`description-${index}`}>{variable.displayName || variable.name}<sub>{variable.sub}</sub><sup>{variable.sup}</sup> - {variable.description}</li>
         ))}
       </ul>
       <p>Введіть значення залежних змінних:</p>
       <Grid container>
         {Object.keys(independentVariables).map(key =>
           independentVariables[key].length || independentVariables[key].length === 0 ? (
-            <Grid container direction="column">
+            <Grid key={key} container direction="column">
               {independentVariables[key].length ? key : `Масив ${key} порожній`}
               <Grid container>
                 {independentVariables[key].map((value, index) => (
