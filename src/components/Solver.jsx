@@ -153,7 +153,7 @@ const Solver = ({ formula, image, variables }) => {
         <Input
           variant="outlined"
           type="number"
-          label={<Label>{dependentVariableName}</Label>}
+          label={<Label>{displayVariable(dependentVariableName)}</Label>}
           value={dependentVariable}
         />
       </Grid>
