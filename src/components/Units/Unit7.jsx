@@ -41,7 +41,7 @@ const Unit7 = {
           variables: [
             { name: 'Y', description: 'термінова виплата' },
             { name: 'D', description: 'величина заборгованості', default: 1 },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
             { name: 'R', description: 'витрати на погашення основної частини боргу', default: 1 },
           ],
         },
@@ -60,7 +60,7 @@ const Unit7 = {
           variables: [
             { name: 'Y', description: 'термінова виплата' },
             { name: 'D', description: 'величина заборгованості', default: 1 },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
             { name: 's_N_i', displayName: 's', sub: 'N,i', description: 'коефіцієнт нарощення постійної ренти з терміном N', default: 1 },
           ],
         },
@@ -70,7 +70,7 @@ const Unit7 = {
           variables: [
             { name: 'Y', description: 'термінова виплата' },
             { name: 'D', description: 'величина заборгованості', default: 1 },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
             { name: 'N', description: 'тривалість позики', default: 1 },
             { name: 's_n_i', displayName: 's', sub: 'N,i', description: 'коефіцієнт нарощення постійної ренти з терміном N', default: 1 },
           ],
@@ -81,7 +81,7 @@ const Unit7 = {
           variables: [
             { name: 'S_t1', displayName: 'S', sub: 't+1', description: 'накопичена у фонді сума за t+1 років' },
             { name: 'St', displayName: 'S', sub: 't', description: 'накопичена у фонді сума за t років', default: 1 },
-            { name: 'i', description: 'відсоткова ставка за певний період (напрклад річна)', default: 0.01 },
+            { name: 'i', description: 'відсоткова ставка за певний період (напрклад річна)', default: 0.01, max: 1, step: 0.01 },
             { name: 'R', description: 'витрати на погашення основної частини боргу', default: 1 },
           ],
         },
@@ -101,7 +101,7 @@ const Unit7 = {
           variables: [
             { name: 'Yt', displayName: 'Y', sub: 't', description: 'термінова виплата на кінець періоду t' },
             { name: 'D', description: 'величина заборгованості', default: 1 },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
             { name: 'Rt', displayName: 'R', sub: 't', description: 'витрати на погашененя основної частини боргу на кінець періоду t', default: 1 },
           ],
         },
@@ -113,7 +113,7 @@ const Unit7 = {
             { name: 's_n_i', displayName: 's', sub: 'N,i', description: 'коефіцієнт нарощення постійної ренти з терміном N', default: 1 },
             { name: 'D', description: 'величина заборгованості', default: 1 },
             { name: 'a', description: 'різниця арифметичної прогресії', default: 1 },
-            { name: 'i_', displayName: 'i', description: 'відсоткова ставка за певний період (напрклад річна)', default: 0.01 },
+            { name: 'i_', displayName: 'i', description: 'відсоткова ставка за певний період (напрклад річна)', default: 0.01, max: 1, step: 0.01 },
             { name: 'N', description: 'тривалість позики', default: 1 },
           ],
         },
@@ -137,7 +137,7 @@ const Unit7 = {
           variables: [
             { name: 'Yt', displayName: 'Y', sub: 't', description: 'термінова виплата на кінець періоду t' },
             { name: 'Dt_1', displayName: 'D', sub: 't-1', description: 'залишок боргу на кінець періоду t-1', default: 1 },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
             { name: 'd', description: 'щорічні виплати на погашення заборгованості', default: 1 },
           ],
         },
@@ -156,7 +156,7 @@ const Unit7 = {
           variables: [
             { name: 'Yt', displayName: 'Y', sub: 't', description: 'термінова виплата на кінець періоду t' },
             { name: 'Dt_1', displayName: 'D', sub: 't-1', description: 'залишок боргу на кінець періоду t-1', default: 1 },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
             { name: 'p', description: 'кількість виплат в періоді t', default: 1 },
             { name: 'D0', displayName: 'D', sub: '0', description: 'величина заборгованості', default: 1 },
             { name: 'n', description: 'кількість періодів', default: 1 },
@@ -178,7 +178,7 @@ const Unit7 = {
           variables: [
             { name: 'Y', description: 'термінова виплата' },
             { name: 'Dt', displayName: 'D', sub: 't', description: 'залишок боргу на кінець періоду t', default: 1 },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
             { name: 'Rt', displayName: 'R', sub: 't', description: 'витрати на погашененя основної частини боргу на кінець періоду t', default: 1 },
           ],
         },
@@ -188,7 +188,7 @@ const Unit7 = {
           variables: [
             { name: 'Y', description: 'термінова виплата' },
             { name: 'D', description: 'величина заборгованості', default: 1 },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
             { name: 'n', description: 'термін позики', default: 1 },
           ],
         },
@@ -197,7 +197,7 @@ const Unit7 = {
           image: formula_7_15,
           variables: [
             { name: 'v', description: 'дисконтний множник за ставкою g' },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -276,8 +276,8 @@ const Unit7 = {
           variables: [
             { name: 'G', description: 'сучасна вартість погашувальних платежів'},
             { name: 'D', description: 'розмір позики', default: 1 },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
-            { name: 'i', description: 'відсоткова ставка', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
+            { name: 'i', description: 'відсоткова ставка', default: 0.01, max: 1, step: 0.01 },
             { name: 'L', description: 'тривалість пільгового періоду становить', default: 1 },
             { name: 'Y', description: 'термінова виплата', default: 1 },
             { name: 'n', description: 'термін позики', default: 1 },
@@ -289,8 +289,8 @@ const Unit7 = {
           image: formula_7_23,
           variables: [
             { name: 'w', description: 'відносний грант-елемент' },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
-            { name: 'i', description: 'відсоткова ставка', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
+            { name: 'i', description: 'відсоткова ставка', default: 0.01, max: 1, step: 0.01 },
             { name: 'L', description: 'тривалість пільгового періоду становить', default: 1 },
             { name: 'n', description: 'термін позики', default: 1 },
             { name: 'v', description: 'дисконтний множник за ставкою i', default: 1 },
@@ -302,7 +302,7 @@ const Unit7 = {
           variables: [
             { name: 'Y', description: 'термінова виплата' },
             { name: 'D', description: 'розмір позики', default: 1 },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
             { name: 'L', description: 'тривалість пільгового періоду становить', default: 1 },
             { name: 'n', description: 'термін позики', default: 1 },
           ],
@@ -313,7 +313,7 @@ const Unit7 = {
           variables: [
             { name: 'G', description: 'сучасна вартість погашувальних платежів'},
             { name: 'Y', description: 'термінова виплата', default: 1 },
-            { name: 'i', description: 'відсоткова ставка за позикою', default: 0.01 },
+            { name: 'i', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
             { name: 'n', description: 'термін позики', default: 1 },
             { name: 'L', description: 'тривалість пільгового періоду становить', default: 1 },
           ],
@@ -323,8 +323,8 @@ const Unit7 = {
           image: formula_7_26,
           variables: [
             { name: 'w', description: 'відносний грант-елемент' },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
-            { name: 'i', description: 'відсоткова ставка', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
+            { name: 'i', description: 'відсоткова ставка', default: 0.01, max: 1, step: 0.01 },
             { name: 'L', description: 'тривалість пільгового періоду становить', default: 1 },
             { name: 'n', description: 'термін позики', default: 1 },
           ],
@@ -335,7 +335,7 @@ const Unit7 = {
           variables: [
             { name: 'Y', description: 'термінова виплата' },
             { name: 'D', description: 'розмір позики', default: 1 },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
             { name: 'm', description: 'кількість періодів нарахування відсотків у році і кількість виплат у році', default: 1 },
             { name: 'n', description: 'кількість років кредиту', default: 1 },
           ],
@@ -346,7 +346,7 @@ const Unit7 = {
           variables: [
             { name: 'Y', description: 'термінова виплата' },
             { name: 'D', description: 'розмір позики', default: 1 },
-            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01 },
+            { name: 'g', description: 'відсоткова ставка за позикою', default: 0.01, max: 1, step: 0.01 },
             { name: 'm', description: 'кількість періодів нарахування відсотків у році і кількість виплат у році', default: 1 },
             { name: 'n', description: 'кількість років кредиту', default: 1 },
             { name: 't', description: 'номер періоду', default: 1 },

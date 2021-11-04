@@ -29,7 +29,7 @@ const Unit5 = {
           image: formula_5_1,
           variables: [
             { name: "i", description: "проста відсоткова ставка," },
-            { name: "d", description: "проста облікова ставка", default: 0.01 },
+            { name: "d", description: "проста облікова ставка", default: 0.01, max: 1, step: 0.01 },
             { name: "n", description: "термін угоди(в роках)" },
           ],
         },
@@ -41,7 +41,7 @@ const Unit5 = {
             {
               name: "i",
               description: "проста відсоткова ставка",
-              default: 0.01,
+              default: 0.01, max: 1, step: 0.01,
             },
             { name: "n", description: "термін угоди(в роках)" },
           ],
@@ -51,7 +51,7 @@ const Unit5 = {
           image: formula_5_3,
           variables: [
             { name: "i", description: "проста відсоткова ставка" },
-            { name: "d", description: "проста облікова ставка", default: 0.01 },
+            { name: "d", description: "проста облікова ставка", default: 0.01, max: 1, step: 0.01 },
             { name: "t", description: "термін угоди(у днях)" },
           ],
         },
@@ -62,7 +62,7 @@ const Unit5 = {
             {
               name: "i",
               description: "проста відсоткова ставка",
-              default: 0.01,
+              default: 0.01, max: 1, step: 0.01,
             },
             { name: "d", description: "проста облікова ставка" },
             { name: "t", description: "термін угоди(у днях)" },
@@ -88,7 +88,7 @@ const Unit5 = {
               description: "складна відсоткова ставка",
               displayName: "i",
               sub: "c",
-              default: 0.01,
+              default: 0.01, max: 1, step: 0.01,
             },
             { name: "n", description: "термін угоди(в роках)", default: 1 },
           ],
@@ -108,7 +108,7 @@ const Unit5 = {
               description: "проста відсоткова ставка,",
               displayName: "i",
               sub: "n",
-              default: 0.01,
+              default: 0.01, max: 1, step: 0.01,
             },
             { name: "n", description: "термін угоди(в роках)", default: 1 },
           ],
@@ -126,7 +126,7 @@ const Unit5 = {
             {
               name: "d",
               description: "складна облікова ставка",
-              default: 0.01,
+              default: 0.01, max: 1, step: 0.01,
             },
             { name: "n", description: "термін угоди(в роках)", default: 1 },
           ],
@@ -136,7 +136,7 @@ const Unit5 = {
           image: formula_5_8,
           variables: [
             { name: "d", description: "проста облікова ставка" },
-            { name: "i", description: "проста відсоткова ставка", default: 0.01 },
+            { name: "i", description: "проста відсоткова ставка", default: 0.01, max: 1, step: 0.01 },
             { name: "n", description: "термін угоди(в роках)", default: 1 },
           ],
         },
@@ -145,7 +145,7 @@ const Unit5 = {
           image: formula_5_9,
           variables: [
             { name: "i", description: "проста облікова ставка" },
-            { name: "d",  description: "складна облікова ставка", default: 0.01 },
+            { name: "d",  description: "складна облікова ставка", default: 0.01, max: 1, step: 0.01 },
             { name: "t", description: "термін угоди(у днях)", default: 1 },
           ],
         },
@@ -154,7 +154,7 @@ const Unit5 = {
           image: formula_5_10,
           variables: [
             { name: "d", description: "проста облікова ставка" },
-            { name: "i", description: "проста відсоткова ставка", default: 0.01 },
+            { name: "i", description: "проста відсоткова ставка", default: 0.01, max: 1, step: 0.01 },
             { name: "t", description: "термін угоди(у днях)", default: 1 },
           ],
         },
@@ -168,7 +168,7 @@ const Unit5 = {
           image: formula_5_11,
           variables: [
             { name: "i", description: "складна облікова ставка" },
-            { name: "d", description: "складна облікова ставка", default: 0.01 },
+            { name: "d", description: "складна облікова ставка", default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -176,7 +176,7 @@ const Unit5 = {
           image: formula_5_12,
           variables: [
             { name: "d", description: "складна облікова ставка" },
-            { name: "i", description: "проста облікова ставка", default: 0.01 },
+            { name: "i", description: "проста облікова ставка", default: 0.01, max: 1, step: 0.01 },
           ],
         },
       ],
@@ -192,7 +192,7 @@ const Unit5 = {
             {
               name: "d",
               description: "складна облікова ставка",
-              default: 0.01,
+              default: 0.01, max: 1, step: 0.01,
             },
             {
               name: "m",
@@ -206,7 +206,7 @@ const Unit5 = {
           image: formula_5_13,
           variables: [
             { name: "d", description: "складна облікова ставка" },
-            { name: "j", description: "номінальна ставка", default: 0.01 },
+            { name: "j", description: "номінальна ставка", default: 0.01, max: 1, step: 0.01 },
             {
               name: "m",
               description: "скільки разів на рік нараховуються відсотки",
@@ -233,7 +233,7 @@ const Unit5 = {
             {
               name: "i",
               description: "Проста відсоткова ставка",
-              default: 0.01,
+              default: 0.01, max: 1, step: 0.01,
             },
             {
               name: "b",
@@ -289,7 +289,7 @@ const Unit5 = {
             {
               name: "i",
               description: "Проста відсоткова ставка",
-              default: 0.01,
+              default: 0.01, max: 1, step: 0.01,
             },
             {
               name: "b",
@@ -356,7 +356,7 @@ const Unit5 = {
             {
               name: "i",
               description: "Проста відсоткова ставка",
-              default: 0.01,
+              default: 0.01, max: 1, step: 0.01,
             },
             {
               name: "k",
@@ -400,7 +400,7 @@ const Unit5 = {
             {
               name: "i",
               description: "Проста відсоткова ставка",
-              default: 0.01,
+              default: 0.01, max: 1, step: 0.01,
             },
             {
               name: "k",

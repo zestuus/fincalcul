@@ -108,17 +108,13 @@ const Solver = ({ formula, image, variables }) => {
   const getInputPropsVariable = (key) => {
     const variable = variables.find(v => v.name === key);
 
-    return variable && (
-        (variable.min && variable.min !== 0) ||
-        (variable.max && variable.max !== 0) ||
-        (variable.step && variable.step !== 0)
-      ) ? {
+    return variable ? {
         inputProps: {
-          min: variable.min,
+          min: variable.min || 0,
           max: variable.max,
           step: variable.step,
         }
-      } : undefined;
+      } : {};
   };
 
   return (

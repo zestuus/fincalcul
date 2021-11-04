@@ -27,7 +27,7 @@ const Unit1 = {
             { name: 'I', description: 'отримані відсоткові гроші' },
             { name: 'n', description: 'термін угоди (в періодах)', default: 1 },
             { name: 'P', description: 'сума грошей, що даються в борг', default: 1 },
-            { name: 'i', description: 'проста відсоткова ставка за один період', default: 0.01, min: 0, max: 1, step: 0.01 },
+            { name: 'i', description: 'проста відсоткова ставка за один період', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -46,7 +46,7 @@ const Unit1 = {
             { name: 'S', description: 'нарощена сума на момент закінчення угоди' },
             { name: 'P', description: 'сума грошей, що даються в борг', default: 1 },
             { name: 'n', description: 'термін угоди (в періодах)', default: 1 },
-            { name: 'i', description: 'проста відсоткова ставка за один період', default: 0.01 },
+            { name: 'i', description: 'проста відсоткова ставка за один період', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -56,8 +56,8 @@ const Unit1 = {
             { name: 'S', description: 'нарощена сума на момент закінчення угоди' },
             { name: 'P', description: 'сума грошей, що даються в борг', default: 1 },
             { name: 't', description: 'кількість днів позики', default: 1 },
-            { name: 'K', description: 'часова база нарахування відсотків (кількість днів у році)', default: 365 },
-            { name: 'i', description: 'проста відсоткова ставка за один період', default: 0.01 },
+            { name: 'K', description: 'часова база нарахування відсотків (кількість днів у році)', default: 365, min: 1 },
+            { name: 'i', description: 'проста відсоткова ставка за один період', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -68,7 +68,7 @@ const Unit1 = {
             { name: 'P', description: 'сума грошей, що даються в борг', default: 1 },
             { name: 'm', description: 'кількість періодів нарахування', default: 1 },
             { name: 'n', description: 'тривалість періоду t', sub: 't', length: 'm', default: 1 },
-            { name: 'i', description: 'ставка простих відсотків в періоді t', sub: 't', length: 'm', default: 0.01, min: 0, max: 1, step: 0.01 },
+            { name: 'i', description: 'ставка простих відсотків в періоді t', sub: 't', length: 'm', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -79,7 +79,7 @@ const Unit1 = {
             { name: 'P', description: 'сума грошей, що даються в борг', default: 1 },
             { name: 'm', description: 'кількість періодів нарахування', default: 1 },
             { name: 'n', description: 'тривалість періоду t', sub: 't', length: 'm', default: 1 },
-            { name: 'i', description: 'ставка простих відсотків в періоді t', sub: 't', length: 'm', default: 0.01 },
+            { name: 'i', description: 'ставка простих відсотків в періоді t', sub: 't', length: 'm', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -90,7 +90,7 @@ const Unit1 = {
             { name: 'P', description: 'сума грошей, що даються в борг', default: 1 },
             { name: 'm', description: 'кількість періодів нарахування', default: 1 },
             { name: 'n', description: 'тривалість періоду t', default: 1 },
-            { name: 'i', description: 'ставка простих відсотків в періоді t', default: 0.01 },
+            { name: 'i', description: 'ставка простих відсотків в періоді t', default: 0.01, max: 1, step: 0.01 },
           ],
         },
       ],
@@ -103,7 +103,7 @@ const Unit1 = {
           image: formula_1_8,
           variables: [
             { name: 'I', description: 'отримані відсоткові гроші' },
-            { name: 'i', description: 'ставка простих відсотків', default: 0.01 },
+            { name: 'i', description: 'ставка простих відсотків', default: 0.01, max: 1, step: 0.01 },
             { name: 'm', description: 'кількість змін залишків на рахунку', default: 1 },
             {
               name: 'R',
@@ -120,8 +120,8 @@ const Unit1 = {
           image: formula_1_9,
           variables: [
             { name: 'I', description: 'отримані відсоткові гроші' },
-            { name: 'i', description: 'ставка простих відсотків', default: 0.01 },
-            { name: 'K', description: 'часова база нарахування відсотків', default: 365 },
+            { name: 'i', description: 'ставка простих відсотків', default: 0.01, max: 1, step: 0.01 },
+            { name: 'K', description: 'часова база нарахування відсотків', default: 365, min: 1 },
             { name: 'm', description: 'кількість змін залишків на рахунку', default: 1 },
             {
               name: 'R',
@@ -145,7 +145,7 @@ const Unit1 = {
             { name: 'S', description: 'нарощена сума боргу' },
             { name: 'P', description: 'сума грошей, що даються в борг', default: 1 },
             { name: 'n', description: 'термін угоди (в періодах)', default: 1 },
-            { name: 'i', description: 'проста відсоткова ставка за один період', default: 0.01 },
+            { name: 'i', description: 'проста відсоткова ставка за один період', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -154,8 +154,8 @@ const Unit1 = {
           variables: [
             { name: 'R', description: 'величина разової виплати за користування кредитом' },
             { name: 'S', description: 'нарощена сума боргу', default: 1 },
-            { name: 'n', description: 'термін кредиту у роках', default: 1 },
-            { name: 'm', description: 'кількість виплат у році.', default: 1 },
+            { name: 'n', description: 'термін кредиту у роках', default: 1, min: 1 },
+            { name: 'm', description: 'кількість виплат у році.', default: 1, min: 1 },
           ],
         },
       ],
@@ -179,7 +179,7 @@ const Unit1 = {
             { name: 'P', description: 'теперішня сума боргу' },
             { name: 'S', description: 'кінцева сума боргу', default: 1 },
             { name: 'n', description: 'термін позики', default: 1 },
-            { name: 'i', description: 'проста відсоткова ставка', default: 0.01 },
+            { name: 'i', description: 'проста відсоткова ставка', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -189,7 +189,7 @@ const Unit1 = {
             { name: 'P', description: 'теперішня сума боргу' },
             { name: 'S', description: 'кінцева сума боргу', default: 1 },
             { name: 'n', description: 'термін позики', default: 1 },
-            { name: 'd', description: 'проста облікова ставка', default: 1 },
+            { name: 'd', description: 'проста облікова ставка', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -197,9 +197,9 @@ const Unit1 = {
           image: formula_1_14,
           variables: [
             { name: 'd', description: 'проста облікова ставка' },
-            { name: 'S', description: 'кінцева сума боргу', default: 1 },
+            { name: 'S', description: 'кінцева сума боргу', default: 1, min: 1 },
             { name: 'P', description: 'теперішня сума боргу', default: 1 },
-            { name: 'n', description: 'термін позики', default: 1 },
+            { name: 'n', description: 'термін позики', default: 1, min: 1 },
           ],
         },
         {
@@ -209,7 +209,7 @@ const Unit1 = {
             { name: 'S', description: 'кінцева сума боргу' },
             { name: 'P', description: 'теперішня сума боргу', default: 1 },
             { name: 'n', description: 'термін позики', default: 1 },
-            { name: 'd', description: 'проста облікова ставка', default: 0.5 },
+            { name: 'd', description: 'проста облікова ставка', default: 0.01 },
           ],
         },
       ],

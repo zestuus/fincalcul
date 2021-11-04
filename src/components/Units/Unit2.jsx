@@ -31,7 +31,7 @@ const Unit2 = {
             { name: 'S', description: 'нарощена сума (з процентами) на кінець терміну' },
             { name: 'P', description: 'початкова величина боргу (позики, кредиту, капіталу і т. п.)', default: 1 },
             { name: 'n', description: 'кількість років нарощення', default: 1 },
-            { name: 'i', description: 'річна ставка складних відсотків (у вигляді десяткового дробу)', default: 0.01 },
+            { name: 'i', description: 'річна ставка складних відсотків (у вигляді десяткового дробу)', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -51,7 +51,7 @@ const Unit2 = {
             { name: 'P', description: 'початкова величина боргу (позики, кредиту, капіталу і т. п.)', default: 1 },
             { name: 'm', description: 'кількість періодів нарахування', default: 1 },
             { name: 'n', description: 'тривалість періоду j', sub: 'j', length: 'm', default: 1 },
-            { name: 'i', description: 'ставка простих відсотків в періоді j', sub: 'j', length: 'm', default: 0.01 },
+            { name: 'i', description: 'ставка простих відсотків в періоді j', sub: 'j', length: 'm', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -60,9 +60,9 @@ const Unit2 = {
           variables: [
             { name: 'S', description: 'нарощена сума (з процентами) на кінець терміну' },
             { name: 'P', description: 'початкова величина боргу (позики, кредиту, капіталу і т. п.)', default: 1 },
-            { name: 'i', description: 'річна ставка складних відсотків (у вигляді десяткового дробу)', default: 0.01 },
+            { name: 'i', description: 'річна ставка складних відсотків (у вигляді десяткового дробу)', default: 0.01, max: 1, step: 0.01 },
             { name: 'c', description: 'ціла частина років, впродовж яких нараховуються складні відсотки', default: 1 },
-            { name: 'd', description: 'дробова частина для нарахування простих відсотків (c + d = n)', default: 0.01 },
+            { name: 'd', description: 'дробова частина для нарахування простих відсотків (c + d = n)', default: 0.01, max: 1, step: 0.01 },
           ],
         },
       ],
@@ -76,7 +76,7 @@ const Unit2 = {
           variables: [
             { name: 'S', description: 'нарощена сума (з процентами) на кінець терміну' },
             { name: 'P', description: 'початкова величина боргу (позики, кредиту, капіталу і т. п.)', default: 1 },
-            { name: 'j', description: 'річна ставка, за якою відсотки нараховуються m разів на рік', default: 0.01 },
+            { name: 'j', description: 'річна ставка, за якою відсотки нараховуються m разів на рік', default: 0.01, max: 1, step: 0.01 },
             { name: 'm', description: 'кількість нарахувань у році', default: 1 },
             { name: 'n', description: 'тривалість угоди в роках', default: 1 },
           ],
@@ -91,7 +91,7 @@ const Unit2 = {
           image: formula_2_6,
           variables: [
             { name: 'i', description: 'ефективна ставка, що відповідає номінальній ставці j' },
-            { name: 'j', description: 'річна ставка, за якою відсотки нараховуються m разів на рік', default: 0.01 },
+            { name: 'j', description: 'річна ставка, за якою відсотки нараховуються m разів на рік', default: 0.01, max: 1, step: 0.01 },
             { name: 'm', description: 'разове нарахування за ставкою j/m', default: 1 },
           ],
         },
@@ -100,7 +100,7 @@ const Unit2 = {
           image: formula_2_7,
           variables: [
             { name: 'j', description: 'річна ставка, за якою відсотки нараховуються m разів на рік' },
-            { name: 'i', description: 'ефективна ставка, що відповідає номінальній ставці j', default: 0.01 },
+            { name: 'i', description: 'ефективна ставка, що відповідає номінальній ставці j', default: 0.01, max: 1, step: 0.01 },
             { name: 'm', description: 'разове нарахування за ставкою j/m', default: 1 },
           ],
         },
@@ -108,8 +108,8 @@ const Unit2 = {
           formula: 'j2m2=m_2*((1+j1m1/m_1)**(m_1/m_2)-1)',
           image: formula_2_8,
           variables: [
-            { name: 'j2m2', description: 'річна ставка 2, за якою відсотки нараховуються m2 разів на рік', displayName: 'j', sub: '2', sup: '(m2)', default: 0.01 },
-            { name: 'j1m1', description: 'річна ставка 1, за якою відсотки нараховуються m1 разів на рік', displayName: 'j', sub: '1', sup: '(m1)', default: 0.01 },
+            { name: 'j2m2', description: 'річна ставка 2, за якою відсотки нараховуються m2 разів на рік', displayName: 'j', sub: '2', sup: '(m2)', default: 0.01, max: 1, step: 0.01 },
+            { name: 'j1m1', description: 'річна ставка 1, за якою відсотки нараховуються m1 разів на рік', displayName: 'j', sub: '1', sup: '(m1)', default: 0.01, max: 1, step: 0.01 },
             { name: 'm_1', description: 'm1 кількість нарахувань в році', displayName: 'm', sub: '1', default: 1 },
             { name: 'm_2', description: 'm2 кількість нарахувань в році', displayName: 'm', sub: '2', default: 1 },
           ],
@@ -127,7 +127,7 @@ const Unit2 = {
             { name: 'P', description: 'початкова величина боргу (позики, кредиту, капіталу і т. п.)' },
             { name: 'S', description: 'нарощена сума (з процентами) на кінець терміну', default: 1 },
             { name: 'n', description: 'кількість років нарощення', default: 1 },
-            { name: 'i', description: 'річна ставка складних відсотків (у вигляді десяткового дробу)', default: 0.01 },
+            { name: 'i', description: 'річна ставка складних відсотків (у вигляді десяткового дробу)', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -138,7 +138,7 @@ const Unit2 = {
             { name: 'S', description: 'нарощена сума (з процентами) на кінець терміну', default: 1 },
             { name: 'n', description: 'кількість років', default: 1 },
             { name: 'm', description: 'кількість нарахувань у році', default: 1 },
-            { name: 'j', description: 'номінальна відсоткова ставка', default: 0.01 },
+            { name: 'j', description: 'номінальна відсоткова ставка', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -148,7 +148,7 @@ const Unit2 = {
             { name: 'v', description: 'дисконтний множник', sup: 'nm' },
             { name: 'n', description: 'кількість років', default: 1 },
             { name: 'm', description: 'кількість нарахувань у році', default: 1 },
-            { name: 'j', description: 'річна ставка складних відсотків (у вигляді десяткового дробу)', default: 0.01 },
+            { name: 'j', description: 'річна ставка складних відсотків (у вигляді десяткового дробу)', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -181,7 +181,7 @@ const Unit2 = {
           variables: [
             { name: 'P', description: 'сучасна (теперішня) сума боргу' },
             { name: 'S', description: 'майбутня сума боргу', default: 1 },
-            { name: 'd', description: 'складна облікова ставка', default: 0.01 },
+            { name: 'd', description: 'складна облікова ставка', default: 0.01, max: 1, step: 0.01 },
             { name: 'n', description: 'тривалість угоди в роках', default: 1 },
           ],
         },
@@ -202,7 +202,7 @@ const Unit2 = {
             { name: 'S', description: 'майбутня сума боргу', default: 1 },
             { name: 'm', description: 'кількість нарахувань у році', default: 1 },
             { name: 'n', description: 'тривалість угоди в роках', default: 1 },
-            { name: 'f', description: 'номінальна річна облікова ставка', default: 0.01 },
+            { name: 'f', description: 'номінальна річна облікова ставка', default: 0.01, max: 1, step: 0.01 },
           ],
         },
         {
@@ -210,7 +210,7 @@ const Unit2 = {
           image: formula_2_16,
           variables: [
             { name: 'd', description: 'ефективна облікова ставка' },
-            { name: 'f', description: 'номінальна річна облікова ставка', default: 0.01 },
+            { name: 'f', description: 'номінальна річна облікова ставка', default: 0.01, max: 1, step: 0.01 },
             { name: 'm', description: 'кількість нарахувань у році', default: 1 },
           ],
         },
@@ -219,7 +219,7 @@ const Unit2 = {
           image: formula_2_17,
           variables: [
             { name: 'f', description: 'номінальна річна облікова ставка' },
-            { name: 'd', description: 'ефективна облікова ставка', default: 0.01 },
+            { name: 'd', description: 'ефективна облікова ставка', default: 0.01, max: 1, step: 0.01 },
             { name: 'm', description: 'кількість нарахувань у році', default: 1 },
           ],
         },
@@ -229,7 +229,7 @@ const Unit2 = {
           variables: [
             { name: 'S', description: 'нарощена сума (з процентами) на кінець терміну'},
             { name: 'P', description: 'початкова величина боргу (позики, кредиту, капіталу і т. п.)', default: 1 },
-            { name: 'd', description: 'складна облікова ставка', default: 0.01 },
+            { name: 'd', description: 'складна облікова ставка', default: 0.01, max: 1, step: 0.01 },
             { name: 'n', description: 'тривалість угоди в роках', default: 1 },
           ],
         },
