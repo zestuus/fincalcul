@@ -1,3 +1,3 @@
 # fincalcul
 
-Ultimate financial calculator
+fincalcul is a financial calculator

@@ -58,9 +58,9 @@ const Home = () => {
         </LogoWrapper>
         <WelcomeBlock item container md={6} direction="column" alignItems="center">
           <Title>Вітаємо</Title>
-          <SecondTitle>Це <Name>fincalcul</Name> &ndash; <br /> - калькулятор фінансів</SecondTitle>
+          <SecondTitle>Це <Name>fincalcul</Name> &ndash; <br /> фінансовий калькулятор</SecondTitle>
           <Description>
-            Тут буде короткий опис продукту ...
+            Тут міг би бути короткий опис продукту,<br/> але його не буде)
           </Description>
         </WelcomeBlock>
       </Container>

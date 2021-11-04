@@ -115,9 +115,9 @@ const Solver = ({ formula, image, variables }) => {
         </Formula>
       </Grid>
       <ul>
-        {variables.map((variable, index) => (
+        {variables.map((variable, index) => variable.description ? (
           <li key={`description-${index}`}>{displayVariable(variable.name, variable)} - {variable.description}</li>
-        ))}
+        ): null)}
       </ul>
       <p>Введіть значення залежних змінних:</p>
       <Grid container>
