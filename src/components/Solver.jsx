@@ -105,6 +105,22 @@ const Solver = ({ formula, image, variables }) => {
     ) : key;
   };
 
+  const getInputPropsVariable = (key) => {
+    const variable = variables.find(v => v.name === key);
+
+    return variable && (
+        (variable.min && variable.min !== 0) ||
+        (variable.max && variable.max !== 0) ||
+        (variable.step && variable.step !== 0)
+      ) ? {
+        inputProps: {
+          min: variable.min,
+          max: variable.max,
+          step: variable.step,
+        }
+      } : undefined;
+  };
+
   return (
     <Grid container direction="column">
       <Grid container justifyContent="center">
@@ -131,6 +147,7 @@ const Solver = ({ formula, image, variables }) => {
                     variant="outlined"
                     type="number"
                     label={<Label>{key}<sub>{index+1}</sub></Label>}
+                    InputProps={getInputPropsVariable(key)}
                     value={value}
                     onChange={event => handleChange(key, event.target.value, index)}
                   />
@@ -143,6 +160,7 @@ const Solver = ({ formula, image, variables }) => {
               variant="outlined"
               type="number"
               label={<Label>{displayVariable(key)}</Label>}
+              InputProps={getInputPropsVariable(key)}
               value={independentVariables[key]}
               onChange={event => handleChange(key, event.target.value)}
             />

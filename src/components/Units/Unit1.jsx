@@ -27,7 +27,7 @@ const Unit1 = {
             { name: 'I', description: 'отримані відсоткові гроші' },
             { name: 'n', description: 'термін угоди (в періодах)', default: 1 },
             { name: 'P', description: 'сума грошей, що даються в борг', default: 1 },
-            { name: 'i', description: 'проста відсоткова ставка за один період', default: 0.01 },
+            { name: 'i', description: 'проста відсоткова ставка за один період', default: 0.01, min: 0, max: 1, step: 0.01 },
           ],
         },
         {
@@ -68,7 +68,7 @@ const Unit1 = {
             { name: 'P', description: 'сума грошей, що даються в борг', default: 1 },
             { name: 'm', description: 'кількість періодів нарахування', default: 1 },
             { name: 'n', description: 'тривалість періоду t', sub: 't', length: 'm', default: 1 },
-            { name: 'i', description: 'ставка простих відсотків в періоді t', sub: 't', length: 'm', default: 0.01 },
+            { name: 'i', description: 'ставка простих відсотків в періоді t', sub: 't', length: 'm', default: 0.01, min: 0, max: 1, step: 0.01 },
           ],
         },
         {
