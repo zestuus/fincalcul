@@ -90,7 +90,7 @@ const Unit5 = {
               sub: "c",
               default: 0.01,
             },
-            { name: "n", description: "термін угоди(в роках)" },
+            { name: "n", description: "термін угоди(в роках)", default: 1 },
           ],
         },
         {
@@ -110,7 +110,7 @@ const Unit5 = {
               sub: "n",
               default: 0.01,
             },
-            { name: "n", description: "термін угоди(в роках)" },
+            { name: "n", description: "термін угоди(в роках)", default: 1 },
           ],
         },
       ],
@@ -128,20 +128,16 @@ const Unit5 = {
               description: "складна облікова ставка",
               default: 0.01,
             },
-            { name: "n", description: "термін угоди(в роках)" },
+            { name: "n", description: "термін угоди(в роках)", default: 1 },
           ],
         },
         {
           formula: "d=(1-((1+i*0.01)**(-n)))/n",
           image: formula_5_8,
           variables: [
-            {
-              name: "i",
-              description: "проста відсоткова ставка",
-              default: 0.01,
-            },
             { name: "d", description: "проста облікова ставка" },
-            { name: "n", description: "термін угоди(в роках)" },
+            { name: "i", description: "проста відсоткова ставка", default: 0.01 },
+            { name: "n", description: "термін угоди(в роках)", default: 1 },
           ],
         },
         {
@@ -149,25 +145,17 @@ const Unit5 = {
           image: formula_5_9,
           variables: [
             { name: "i", description: "проста облікова ставка" },
-            {
-              name: "d",
-              description: "складна облікова ставка",
-              default: 0.01,
-            },
-            { name: "t", description: "термін угоди(у днях)" },
+            { name: "d",  description: "складна облікова ставка", default: 0.01 },
+            { name: "t", description: "термін угоди(у днях)", default: 1 },
           ],
         },
         {
           formula: "d=(360/t)*(1-(i*0.01+1)**(-(t/365)))",
           image: formula_5_10,
           variables: [
-            {
-              name: "i",
-              description: "проста відсоткова ставка",
-              default: 0.01,
-            },
             { name: "d", description: "проста облікова ставка" },
-            { name: "t", description: "термін угоди(у днях)" },
+            { name: "i", description: "проста відсоткова ставка", default: 0.01 },
+            { name: "t", description: "термін угоди(у днях)", default: 1 },
           ],
         },
       ],
@@ -180,19 +168,15 @@ const Unit5 = {
           image: formula_5_11,
           variables: [
             { name: "i", description: "складна облікова ставка" },
-            {
-              name: "d",
-              description: "складна облікова ставка",
-              default: 0.01,
-            },
+            { name: "d", description: "складна облікова ставка", default: 0.01 },
           ],
         },
         {
           formula: "d=i/(1+i)",
           image: formula_5_12,
           variables: [
-            { name: "i", description: "проста облікова ставка", default: 0.01 },
             { name: "d", description: "складна облікова ставка" },
+            { name: "i", description: "проста облікова ставка", default: 0.01 },
           ],
         },
       ],
@@ -213,6 +197,7 @@ const Unit5 = {
             {
               name: "m",
               description: "скільки разів на рік нараховуються відсотки",
+              default: 1,
             },
           ],
         },
@@ -220,11 +205,12 @@ const Unit5 = {
           formula: "d=1-((1+(j/m))**m)",
           image: formula_5_13,
           variables: [
-            { name: "j", description: "номінальна ставка", default: 0.01 },
             { name: "d", description: "складна облікова ставка" },
+            { name: "j", description: "номінальна ставка", default: 0.01 },
             {
               name: "m",
               description: "скільки разів на рік нараховуються відсотки",
+              default: 1,
             },
           ],
         },
@@ -235,75 +221,18 @@ const Unit5 = {
       formulas: [
         {
           formula:
-            "s_0 = Σ(Μ(S2,(s2,j)=>s2*(1+(t2[j]*i/365)))) + Σ(Μ(S1,(s1,j)=>s1/(1+(t1[j]*i/365))))",
+            "s_0=Σ(Μ(S1,(s1,j)=>s1*(1+(t1[j]*i/365)))) + Σ(Μ(S2,(s2,k)=>s2/(1+(t2[k]*i/365))))",
           image: formula_5_15,
           variables: [
             {
               name: "s_0",
               displayName: "S",
-              sup: "0",
+              sub: "0",
               description: "Розмір консолідованого платежу",
             },
             {
               name: "i",
-              description: "Прості відсоткові ставки",
-              default: 0.01,
-            },
-            {
-              name: "k",
-              description: "Кількість платежів,що передаються перед n",
-              default: 1,
-            },
-            {
-              name: "S2",
-              sup: "k",
-              displayName: "",
-              description: "Платежі,що передаються перед n",
-              length: "k",
-              default: 1,
-            },
-            {
-              name: "t2",
-              sup: "k",
-              description: "На скільки відповідний платіж потрібно наростити",
-              length: "k",
-              default: 1,
-            },
-            {
-              name: "a",
-              description: "Кількість платежів з терміном після n",
-              default: 1,
-            },
-            {
-              name: "S1",
-              sup: "i",
-              description: "Платежі з терміном після n",
-              length: "a",
-              default: 1,
-            },
-            {
-              name: "t1",
-              sup: "i",
-              description: "На скільки відповідний платіж дисконтуваний",
-              length: "a",
-              default: 1,
-            },
-          ],
-        },
-        {
-          formula:
-            "s_0 = Σ(Μ(S2,(s2,j)=>s2*((1+i)**(t2[j]/365)))) + Σ(Μ(S1,(s1,j)=>s1/((1+i)**(t1[j]/365))))",
-          image: formula_5_16,
-          variables: [
-            {
-              name: "s_0",
-              displayName: "S",
-              sup: "0",
-              description: "Розмір консолідованого платежу",
-            },
-            {
-              name: "i",
-              description: "Прості відсоткові ставки",
+              description: "Проста відсоткова ставка",
               default: 0.01,
             },
             {
@@ -312,17 +241,59 @@ const Unit5 = {
               default: 1,
             },
             {
-              name: "S2",
-              sup: "i",
+              name: "a",
+              description: "Кількість платежів з терміном після n",
+              default: 1,
+            },
+            {
+              name: "S1",
+              sub: "j",
               description: "Платежі,що передаються перед n",
               length: "b",
               default: 1,
             },
             {
-              name: "t2",
-              sup: "i",
+              name: "t1",
+              sub: "j",
               description: "На скільки відповідний платіж потрібно наростити",
               length: "b",
+              default: 1,
+            },
+            {
+              name: "S2",
+              sub: "k",
+              description: "Платежі з терміном після n",
+              length: "a",
+              default: 1,
+            },
+            {
+              name: "t2",
+              sub: "k",
+              description: "На скільки відповідний платіж потрібно дисконтувати",
+              length: "a",
+              default: 1,
+            },
+          ],
+        },
+        {
+          formula:
+            "s_0=Σ(Μ(S1,(s1,j)=>s1*((1+i)**(t1[j]/365)))) + Σ(Μ(S2,(s2,j)=>s2/((2+i)**(t2[j]/365))))",
+          image: formula_5_16,
+          variables: [
+            {
+              name: "s_0",
+              displayName: "S",
+              sub: "0",
+              description: "Розмір консолідованого платежу",
+            },
+            {
+              name: "i",
+              description: "Проста відсоткова ставка",
+              default: 0.01,
+            },
+            {
+              name: "b",
+              description: "Кількість платежів,що передаються перед n",
               default: 1,
             },
             {
@@ -332,15 +303,29 @@ const Unit5 = {
             },
             {
               name: "S1",
-              sup: "i",
+              sub: "j",
+              description: "Платежі,що передаються перед n",
+              length: "b",
+              default: 1,
+            },
+            {
+              name: "t1",
+              sub: "j",
+              description: "На скільки відповідний платіж потрібно наростити",
+              length: "b",
+              default: 1,
+            },
+            {
+              name: "S2",
+              sub: "k",
               description: "Платежі з терміном після n",
               length: "a",
               default: 1,
             },
             {
-              name: "t1",
-              sup: "i",
-              description: "На скільки відповідний платіж дисконтуваний",
+              name: "t2",
+              sub: "k",
+              description: "На скільки відповідний платіж потрібно дисконтувати",
               length: "a",
               default: 1,
             },
@@ -352,41 +337,42 @@ const Unit5 = {
       title: "5.7 Визначення терміну консолідованого платежу",
       formulas: [
         {
-          formula: "n_0 = ((S_0/(Σ(Μ(S1,(s1,j)=>s1/(1+(n[j]*i/365))))))-1)/i",
+          formula: "n_0=((s_0/(Σ(Μ(S,(s1,j)=>s1/(1+(n[j]*i/365))))))-1)/i",
           image: formula_5_17,
           variables: [
             {
               name: "n_0",
               displayName: "n",
-              sup: "0",
+              sub: "0",
               description: "Термін консолідованого платежу",
             },
             {
-              name: "S_0",
+              name: "s_0",
               displayName: "S",
-              sup: "0",
+              sub: "0",
               description: "Розмір консолідованого платежу",
+              default: 1,
             },
             {
               name: "i",
-              description: "Прості відсоткові ставки",
+              description: "Проста відсоткова ставка",
               default: 0.01,
             },
             {
               name: "k",
-              description: "Кількість платежів,що передаються перед n",
+              description: "Кількість платежів, що передаються перед n",
               default: 1,
             },
             {
-              name: "S1",
-              sup: "k",
-              description: "Платежі,що передаються перед n",
+              name: "S",
+              sub: "k",
+              description: "Платежі, що передаються перед n",
               length: "k",
               default: 1,
             },
             {
               name: "n",
-              sup: "k",
+              sub: "k",
               description: "На скільки відповідний платіж потрібно наростити",
               length: "k",
               default: 1,
@@ -395,41 +381,42 @@ const Unit5 = {
         },
         {
           formula:
-            "n_0 = Math.log(S_0/(Σ(Μ(S1,(s1,j)=>s1/((1+i)**n[j])))))/Math.log(1+i)",
+            "n_0=Math.log(s_0/(Σ(Μ(S,(s1,j)=>s1/((1+i)**n[j])))))/Math.log(1+i)",
           image: formula_5_18,
           variables: [
             {
               name: "n_0",
               displayName: "n",
-              sup: "0",
+              sub: "0",
               description: "Термін консолідованого платежу",
             },
             {
-              name: "S_0",
+              name: "s_0",
               displayName: "S",
-              sup: "0",
+              sub: "0",
               description: "Розмір консолідованого платежу",
+              default: 1,
             },
             {
               name: "i",
-              description: "Прості відсоткові ставки",
+              description: "Проста відсоткова ставка",
               default: 0.01,
             },
             {
               name: "k",
-              description: "Кількість платежів,що передаються перед n",
+              description: "Кількість платежів, що передаються перед n",
               default: 1,
             },
             {
-              name: "S1",
-              sup: "k",
-              description: "Платежі,що передаються перед n",
+              name: "S",
+              sub: "k",
+              description: "Платежі, що передаються перед n",
               length: "k",
               default: 1,
             },
             {
               name: "n",
-              sup: "k",
+              sub: "k",
               description: "На скільки відповідний платіж потрібно наростити",
               length: "k",
               default: 1,
